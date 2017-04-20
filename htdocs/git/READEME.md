@@ -154,8 +154,143 @@ git blame –L 100,110 <file name>
 
 ### DIFF
 
-![Image of Yaktocat](images/diff.png)
+![git diff](images/diff.png)
 
+### 回撤操作
+
+- 回撤暂存区内容到工作目录
+```git reset HEAD```
+
+- 回撤提交到暂存区
+```git reset HEAD --soft```
+
+- 回撤提交，放弃变更
+```git reset HEAD –-hard```
+
+- 回撤远程仓库，-f  即 --force
+```git push -f```
+![git reset](images/reset.png)
+![git reset](images/reset2.png)
+
+- 变基操作，改写历史提交
+
+```git rebase –i HEAD~3```
+
+### 标签
+
+- 在当前提交上，打标签 foo
+
+```git tag foo ```
+
+- 在当前提交上，打标签 foo，并给 message 信息注释
+
+```git tag foo –m “message”```
+
+- 在当前提交之前的第 4 个版本上，打标签 foo
+
+```git tag foo HEAD~4```
+
+- 列出所有标签
+
+```git tag```
+
+- 删除标签
+
+```git tag –d foo```
+
+- 把标签推送到远程仓库
+
+```git push origin --tags```
+
+- 把标签推送到远程仓库
+
+```git push origin v0.1```
+
+## 分支
+
+- 创建分支 foo
+
+···git branch foo   ···
+    
+- 切换到分支 foo
+
+···git checkout foo···
+
+- 创建分支并同时切换到 foo，一步做到
+
+···git checkout -b foo···
+
+
+- 修改分支名字
+
+···
+git branch –m old_name new_name
+git branch –M old_name new_name   
+···
+
+- 删除分支 foo
+
+···
+git branch -d foo
+Git branch –D foo
+···
+- 列出远程分支
+
+···git branch -r
+···
+
+- 查看已合并的分支
+
+···git branch --merged
+git branch --no-merged
+ ···
+ 
+- 列出远程合并的分支
+
+···
+git branch -r --merged
+···
+
+- 取出远程 foo 分支
+
+···
+git checkout –t origin/foo
+···
+
+- 删除远程分支
+···
+git push origin <space>:<remote branch>
+git fetch -p
+   ···· 
+   
+- 合并分支
+
+···git merge <branch name>···
+
+- 合并分支，拒绝 fast forward，产生合并 commit
+
+···git merge –-no-ff···
+
+### Git stash
+
+-  保存进度
+
+```git stash```
+    
+- 弹出进度
+
+```git stash pop```
+
+- 查看 stash 列表
+
+```
+git stash list
+```
+
+- 删除 stash 列表
+```
+git stash clear
+```
 
 ## 资源
 
