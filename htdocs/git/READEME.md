@@ -75,6 +75,20 @@ git log --oneline
 git log –pretty=format:’%h %ad | %s%d’ –graph –date=short
 ```
 
+> short and branch
+
+```git status -sb```
+
+> 查看某个提交信息
+```git show HEAD```
+
+> 查看提交历史
+```git log <file name>
+git log --grep <msg>
+git log -n
+```
+
+
 - 同步远程仓库
 
 > 增加远程仓库，并命名
@@ -127,7 +141,23 @@ git push [remote] [branch]
 ```ssh-Keygen -t rsa -C "your email"```
 
 
+- 逐行查看文件的修改历史
+```
+git blame <file name>
+
+从第 100 行开始，到 110 行。逐行查看文件的修改历史
+git blame –L 100,110 <file name>
+```
+### 文件提交
+
+- 每个提交要保证适当的颗粒度、相关性和独立性。
+
+### DIFF
+
+![Image of Yaktocat](images/diff.png)
+
 
 ## 资源
 
 - https://github.com/wangding/courses
+- http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html
