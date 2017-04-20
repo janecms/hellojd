@@ -48,14 +48,6 @@
 
 >> ```git mv [file-origin] [file-renamed]```
 
-- 代码提交
-
->>提交暂存区到仓库
-
- ```shell
-git commit –m [message]  
-git commit –a –m [message]
-```
 
 - 查看信息
 
@@ -152,6 +144,13 @@ git blame –L 100,110 <file name>
 
 - 每个提交要保证适当的颗粒度、相关性和独立性。
 
+>>提交暂存区到仓库
+
+ ```shell
+git commit –m [message]  
+git commit –a –m [message]
+```
+
 ### DIFF
 
 ![git diff](images/diff.png)
@@ -170,7 +169,7 @@ git blame –L 100,110 <file name>
 - 回撤远程仓库，-f  即 --force
 ```git push -f```
 ![git reset](images/reset.png)
-![git reset](images/reset2.png)
+![git reset2](images/reset2.png)
 
 - 变基操作，改写历史提交
 
