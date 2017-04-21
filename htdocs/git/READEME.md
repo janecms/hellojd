@@ -209,66 +209,66 @@ git commit –a –m [message]
 
 - 创建分支 foo
 
-···git branch foo   ···
+```git branch foo   ```
     
 - 切换到分支 foo
 
-···git checkout foo···
+```git checkout foo```
 
 - 创建分支并同时切换到 foo，一步做到
 
-···git checkout -b foo···
+```git checkout -b foo```
 
 
 - 修改分支名字
 
-···
+```
 git branch –m old_name new_name
 git branch –M old_name new_name   
-···
+```
 
 - 删除分支 foo
 
-···
+```
 git branch -d foo
 Git branch –D foo
-···
+```
 - 列出远程分支
 
-···git branch -r
-···
+```git branch -r
+```
 
 - 查看已合并的分支
 
-···git branch --merged
+```git branch --merged
 git branch --no-merged
- ···
+ ```
  
 - 列出远程合并的分支
 
-···
+```
 git branch -r --merged
-···
+```
 
 - 取出远程 foo 分支
 
-···
+```
 git checkout –t origin/foo
-···
+```
 
 - 删除远程分支
-···
+```
 git push origin <space>:<remote branch>
 git fetch -p
-   ···· 
+   ```· 
    
 - 合并分支
 
-···git merge <branch name>···
+```git merge <branch name>```
 
 - 合并分支，拒绝 fast forward，产生合并 commit
 
-···git merge –-no-ff···
+```git merge –-no-ff```
 
 ### Git stash
 
