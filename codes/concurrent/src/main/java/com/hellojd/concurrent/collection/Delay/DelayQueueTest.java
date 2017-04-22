@@ -1,4 +1,4 @@
-package com.hellojd.concurrent.collection.Delay;
+package com.hellojd.concurrent.collection.delay;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.DelayQueue;

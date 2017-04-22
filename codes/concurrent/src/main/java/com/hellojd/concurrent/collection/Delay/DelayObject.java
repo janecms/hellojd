@@ -1,4 +1,4 @@
-package com.hellojd.concurrent.collection.Delay;
+package com.hellojd.concurrent.collection.delay;
 
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
