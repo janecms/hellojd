@@ -32,6 +32,14 @@
 		#statement
      done < <(find $path -type f -print)
 ```
+-	8. 只列出目录
+```
+  find .  -maxdepth 1 -type d -print
+  ls -l |grep "^d"
+  ls -F |grep "/$"
+  ls -d */
+```
+
 ## 数组
 
 - 删除操作
@@ -63,3 +71,5 @@
 	 ${!arr[@]}
 	 ${!arr[*]}	 
 	```
+	
+	
