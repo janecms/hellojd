@@ -6,7 +6,11 @@
 
     <groupId>com.hellojd.code</groupId>
     <artifactId>concurrent</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>../servletapi3</module>
+    </modules>
     <properties>
         <project>concurrent</project>
         <java.version>1.7</java.version>

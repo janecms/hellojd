@@ -60,6 +60,3 @@ This directive appeared in version 1.1.4.
 ```
 connections参数设置保存在每个工作进程的缓存中的上游服务器的最大空闲保持连接数。 超过时，关闭最近使用的最近连接。
 - 建议只对小报文开启长连接
-
-## 动态负载均衡
-Consul
