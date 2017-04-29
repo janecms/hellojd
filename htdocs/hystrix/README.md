@@ -23,6 +23,7 @@ Hystrix是一个库，可以通过添加延迟容错和容错逻辑来帮助您�
 如果您不设计整个系统的韧性。即使所有依赖关系表现良好，即使0.01％的停机时间,对数十个服务中的每一个服务的总体影响等同于每月停机的潜在时间。
 一切正常时，请求过程像这样
 ![soa-1](https://github.com/Netflix/Hystrix/wiki/images/soa-1-640.png)
+
 当某个依赖服务发生延迟，会阻塞整体用户请求
 ![soa-2](https://github.com/Netflix/Hystrix/wiki/images/soa-2-640.png)
 
