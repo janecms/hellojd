@@ -30,3 +30,19 @@ public class MyServletContainerInitializer implements ServletContainerInitialize
 ```
 其中Set<Class<?>> c,是由HandlesTypes注解声明。
 org.springframework.web.WebApplicationInitializer是一个HandlesTypes。具体参见SpringServletContainerInitializer。
+
+- 4. 配置Spring MVC环境
+
+controller
+```
+@Configuration
+@EnableWebMvc
+@ComponentScan(value = {"com.hellojd.servletapi.springmvc.**.web"},
+                includeFilters = {@ComponentScan.Filter(value = Controller.class,type= FilterType.ANNOTATION)})
+```
+定义service
+```
+@Configuration
+@ComponentScan(value = {"com.hellojd.servletapi.**.service"},
+               excludeFilters={@ComponentScan.Filter(type =FilterType.ANNOTATION,value = Controller.class)})
+```
