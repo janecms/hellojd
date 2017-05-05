@@ -287,6 +287,7 @@ git stash list
 ```
 
 - 删除 stash 列表
+
 ```
 git stash clear
 ```

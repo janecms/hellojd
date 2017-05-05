@@ -24,17 +24,19 @@ grep -e "pattern1" -e "pattern2"
 grep "Thread" . -r --include=*.{c,out} --color=auto
 
 
-###	xargs
+## xargs
 
 -文件相关
 ```
  find . -type f -name "*.out" -print0 | xargs -0 rm -f
  find . -type f -name "*.php" -print0 | xargs -0  wc -l
+ 
  #xargs -0将\0作为定界符。
 
 ```
--  复制所有图片文件到 /data/images 目录下
 
+
+-	复制所有图片文件到 /data/images 目录下
 ```
 ls *.jpg | xargs -n1 -I cp {} /data/images
 ```
