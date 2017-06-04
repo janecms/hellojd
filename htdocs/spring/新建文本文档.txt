@@ -1,0 +1,27 @@
+## mvc:annotation-driven 
+```
+    <mvc:annotation-driven enableMatrixVariables="false">
+        <mvc:argument-resolvers>
+            <bean
+                class="org.springframework.data.web.PageableArgumentResolver">
+            </bean>
+            <bean class="com.hellojd.common.web.HeaderVersionArgumentResolver" />
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
+```
+
+```
+http\://www.springframework.org/schema/mvc=org.springframework.web.servlet.config.MvcNamespaceHandler
+```
+
+```
+AnnotationDrivenBeanDefinitionParser
+```
+
+
+```sequence
+Title:连接建立的过程
+客户主机-->>服务器主机: 连接请求（SYN=1,seq=client_isn） 
+服务器主机-->客户主机: 授予连接（SYN=1,seq=client_isn）\n ack=client_isn+1
+客户主机->>服务器主机: 确认（SYN=0,seq=client_isn+1）\nack=server_isn+1
+ ```
