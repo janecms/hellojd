@@ -370,4 +370,120 @@ templateEngine.process("home", ctx, response.getWriter());
 ```
 在本教程的后面，有一个专门用于模板布局的部分，包括对片段表达式的更深入的解释。
 
+### 4.6 Literals
+文本文字只是在单引号之间指定的字符串。 它们可以包含任何字符，但是您应该使用\'转义其中的任何单引号。
+```
+<p>
+  Now you are looking at a <span th:text="'working web application'">template file</span>.
+</p>
+```
 
+** Number literals**
+```
+<p>The year is <span th:text="2013">1492</span>.</p>
+<p>In two years, it will be <span th:text="2013 + 2">1494</span>.</p>
+```
+**Boolean literals**
+```
+<div th:if="${user.isAdmin()} == false"> ...
+```
+在这个例子中，== false被写在大括号之外，所以它是Thymeleaf来处理的。 如果它是写在大括号内，那将是OGNL / SpringEL引擎的责任：
+
+```
+div th:if="${user.isAdmin() == false}"> ...
+```
+
+**The null literal**
+```
+<div th:if="${variable.something} == null"> ...
+```
+** Literal tokens **
+这些令牌允许在标准表达式中进行一点简化。 它们与文本文字（'...'）完全一样，
+但它们只允许使用字母（AZ和az），数字（0-9），括号（[和]），点（。），连字符（ - ） 和下划线（_）。 所以没有空白，没有逗号等
+令牌不需要围绕它们的任何引号。 所以我们可以这样做：
+```
+<div th:class="content">...</div>
+instead of:
+<div th:class="'content'">...</div>
+```
+** 4.7 Appending texts**
+
+无论是文字，还是评估变量或消息表达式的结果，都可以使用+运算符轻松地附加文本：
+```
+<span th:text="'The name of the user is ' + ${user.name}">
+
+```
+### 4.8 Literal substitutions
+
+字面替换允许容易地格式化包含变量值的字符串，而不需要使用“...”+“...”附加文字。
+```
+<span th:text="|Welcome to our application, ${user.name}!|">
+相当于
+<span th:text="'Welcome to our application, ' + ${user.name} + '!'">
+```
+### 4.9 Arithmetic operations
+···
+<div th:with="isEven=(${prodStat.count} % 2 == 0)">
+
+ognl
+<div th:with="isEven=${prodStat.count % 2 == 0}">
+···
+### 4.10 Comparators and Equality
+```
+<div th:if="${prodStat.count} &gt; 1">
+<span th:text="'Execution mode is ' + ( (${execMode} == 'dev')? 'Development' : 'Production')">
+```
+
+### 4.11 Conditional expressions
+```
+<tr th:class="${row.even}? 'even' : 'odd'">
+  ...
+</tr>
+
+<tr th:class="${row.even}? (${row.first}? 'first' : 'even') : 'odd'">
+  ...
+</tr>
+```
+### 4.12 Default expressions (Elvis operator)
+默认表达式是一种特殊类型的条件值，而没有那个部分。 它相当于以一些语言（如Groovy）存在的Elvis操作员，允许您指定两个表达式：如果不评估为null，则使用第一个表达式，
+但是如果使用第二个表达式则使用第一个表达式。
+
+```
+<div th:object="${session.user}">
+  ...
+  <p>Age: <span th:text="*{age}?: '(no age specified)'">27</span>.</p>
+  
+  相当于
+
+  <p>Age: <span th:text="*{age != null}? *{age} : '(no age specified)'">27</span>.</p>
+</div>
+```
+### 4.13 The No-Operation token
+
+```
+<span th:text="${user.name} ?: 'no user authenticated'">...</span>
+
+
+<span th:text="${user.name} ?: _">no user authenticated</span>
+
+```
+### 4.14 Preprocessing
+除了表达式处理的所有这些功能之外，Thymeleaf具有预处理表达式的功能。
+预处理是在正常的表达式之前执行的表达式的执行，允许修改最终将被执行的表达式。
+预处理的表达式与正常表达式完全相同，但由双下划线符号（如__ $ {expression} __）显示。
+
+
+### 4.15 Data Conversion / Formatting
+
+Thymeleaf为变量（$ {...}）和选择（* {...}）表达式定义了一个双括号语法，允许我们通过配置的转换服务应用数据转换。
+
+它基本上是这样的：
+```
+<td th:text="${{user.lastAccessDate}}">...</td>
+```
+$ {{...}}。 这指示Thymeleaf将user.lastAccessDate表达式的结果传递给转换服务，并要求在写入结果之前执行格式化操作（转换为String）。
+假设user.lastAccessDate的类型为java.util.Calendar，如果转换服务（IStandardConversionService的实现）已经被注册，并且包含有效的Calendar - > String转换，它将被应用。
+IStandardConversionService（StandardConversionService类）的默认实现只需对转换为String的任何对象执行.toString（）。 有关如何注册自定义转换服务实现的更多信息，请参阅更多配置部分。
+```
+<p th:text="${__#{article.text('textVar')}__}">Some text here...</p>
+```
