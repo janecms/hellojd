@@ -183,7 +183,10 @@ git commit –a –m [message]
 
 - 在当前提交上，打标签 foo，并给 message 信息注释
 
-```git tag foo –m “message”```
+```
+git tag foo –m “message”
+git tag -a v1.1.4 -m "tagging version 1.1.4"  
+```
 
 - 在当前提交之前的第 4 个版本上，打标签 foo
 
@@ -204,6 +207,10 @@ git commit –a –m [message]
 - 把标签推送到远程仓库
 
 ```git push origin v0.1```
+
+- 删除远程标签
+
+```git push origin :refs/tags/标签名  ```
 
 ## 分支
 
@@ -259,6 +266,8 @@ git checkout –t origin/foo
 - 删除远程分支
 ```
 git push origin <space>:<remote branch>
+git push --delete origin devel
+删除掉没有与远程分支对应的本地分支
 git fetch -p
    ```· 
    
