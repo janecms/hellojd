@@ -13,4 +13,6 @@ Spring Session提供了一个用于管理用户会话信息的API和实现。
 
 	| Source 	|	Description 	|	Guide	|
 	|------		|	----------		|	-------	|
-	|	[HttpSession with Redis](https://github.com/spring-projects/spring-session/tree/2.0.0.M2/samples/javaconfig/redis)	|	|	|
+	|HttpSession with Redis	|	|	|
+	
+	(HttpSession with Redis)[https://github.com/spring-projects/spring-session/tree/2.0.0.M2/samples/javaconfig/redis]
